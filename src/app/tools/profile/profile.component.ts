@@ -32,7 +32,8 @@ export class ProfileComponent implements OnInit {
           path:["Users",this.auth.getAuth().currentUser?.uid!],
           data:{
             publicName:name,
-            description:desc
+            description:desc,
+            userId:this.auth.getAuth().currentUser?.uid!
           },
           onComplete:(docId)=>{
             alert("Profile Created");

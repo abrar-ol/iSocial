@@ -1,8 +1,9 @@
+import { ReplyComponent } from './../reply/reply.component';
 import { UserDocument } from './../../app.component';
 import { PostData } from './../../pages/post-feed/post-feed.component';
 import { Component, Input, OnInit } from '@angular/core';
 import { FirebaseTSFirestore } from 'firebasets/firebasetsFirestore/firebaseTSFirestore';
-
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -15,10 +16,14 @@ export class PostComponent implements OnInit {
   creatorDescription!:string;
 
   @Input() postData!:PostData;
-  constructor() { }
+  constructor(private dialog:MatDialog) { }
 
   ngOnInit(): void {
     this.getCreatorInfo();
+  }
+
+  onReplyClick(){
+    this.dialog.open(ReplyComponent,{data:this.postData.postId});
   }
 
   getCreatorInfo(){

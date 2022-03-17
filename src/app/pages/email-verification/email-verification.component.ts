@@ -28,4 +28,16 @@ export class EmailVerificationComponent implements OnInit {
     this.auth.sendVerificationEmail();
   }
 
+  isVerified(){
+    return this.auth.getAuth().currentUser?.emailVerified;
+  }
+
+  isSignedIn(){
+    return this.auth.isSignedIn()
+  }
+
+  Refresh(){
+    this.router.navigate(["../postfeed"]);
+  }
+
 }

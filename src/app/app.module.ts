@@ -20,7 +20,8 @@ import { CreatePostComponent } from './tools/create-post/create-post.component';
 import { PostComponent } from './tools/post/post.component';
 import { SpinnerComponent } from './tools/spinner/spinner.component';
 import { ReplyComponent } from './tools/reply/reply.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { NotifierComponent } from './tools/notifier/notifier.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { ReplyComponent } from './tools/reply/reply.component';
     CreatePostComponent,
     PostComponent,
     SpinnerComponent,
-    ReplyComponent
+    ReplyComponent,
+    NotifierComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { ReplyComponent } from './tools/reply/reply.component';
     MatBottomSheetModule,
     MatCardModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

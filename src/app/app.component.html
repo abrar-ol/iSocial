@@ -1,5 +1,5 @@
 
-<div id="nav-bar">
+<div id="nav-bar" >
   <div id="nav-bar-content">
     <div id="nav-bar-left">
       <div style="font-size: 1.5em;" class="nav-bar-items">iSocial</div>
@@ -11,10 +11,15 @@
       class="nav-bar-items"
       (click)="onLoginClick()">Login</div>
 
+      <!-- Loading Spinner -->
+      <div *ngIf="loading" >
+        <app-spinner ></app-spinner>
+      </div>
+
       <div
-      *ngIf="loggedIn()&&userHasProfile&&userDocument"
+      *ngIf="loggedIn()&&userHasProfile&&getUserDocument()&&!loading"
       class="nav-bar-items"
-      >Hello, {{userDocument.publicName}}</div>
+      >Hello, {{getUsername()}}</div>
 
       <div
       *ngIf="loggedIn()"

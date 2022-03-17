@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { NotifierService } from './../../services/notifier.service';
 import { Component, OnInit } from '@angular/core';
 import {FirebaseTSAuth} from 'firebasets/firebasetsAuth/firebaseTSAuth';
 import { MatBottomSheetRef } from '@angular/material/bottom-sheet';
@@ -12,7 +14,7 @@ export class AuthenticatorComponent implements OnInit {
   state = AuthenticatorCompState.LOGIN;
   firebaseAuth!: FirebaseTSAuth;
 
-  constructor(private bottomSheetRef:MatBottomSheetRef) {
+  constructor(private bottomSheetRef:MatBottomSheetRef,private notification:NotifierService,private router:Router) {
     this.firebaseAuth=new FirebaseTSAuth();
   }
 
@@ -58,9 +60,14 @@ export class AuthenticatorComponent implements OnInit {
           password:password,
           onComplete:(uc)=>{
             this.bottomSheetRef.dismiss();
+
+            this.router.navigate(["/postfeed"]);
+            this.notification.showNotification("LoggedIn Successfuly ..","Ok","success");
           },
           onFail:(err)=>{
-            alert("Faild to login: "+err);
+            console.log("Faild to login: "+err);
+            this.notification.showNotification("LoggedIn Failed :( ","Try Later","error");
+
           }
         });
       }

@@ -2,4 +2,6 @@
   <h1>Your Email is Not Verified</h1>
   <button mat-flat-button
   (click)="onResendClick()">Resend verification Email</button>
+  <button mat-flat-button color="primary"
+  (click)="Refresh()" *ngIf="isVerified()&&isSignedIn()">Verified</button>
 </div>
